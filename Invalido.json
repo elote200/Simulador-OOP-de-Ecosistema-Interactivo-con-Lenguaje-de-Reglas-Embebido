@@ -1,0 +1,12 @@
+{
+  "Sabana Africana": {
+    "Elefante": {
+      "cantidad": 2,
+      "energia maxima": 50,
+      "reglas": [
+        "Si energia < 45 entonces comer",
+        "Si energia = 50 entonces reproducirse"
+      ]
+    }
+  }
+}

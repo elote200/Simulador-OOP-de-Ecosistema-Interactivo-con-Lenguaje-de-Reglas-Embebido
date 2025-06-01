@@ -25,5 +25,4 @@ def tokenizar(string):
                 
                 string = string[len(match.group()):]
                 break
-    
     return tokens
