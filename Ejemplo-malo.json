@@ -1,0 +1,14 @@
+[
+  {
+    "Desierto Rojo": {
+      "Camello": {
+        "cantidad": 1,
+        "energia maxima": 40,
+        "reglas": [
+          "Si energia => 35 entonces descansar",
+          "Si energia = 40 entonces caminar"
+        ]
+      }
+    }
+  }
+]
