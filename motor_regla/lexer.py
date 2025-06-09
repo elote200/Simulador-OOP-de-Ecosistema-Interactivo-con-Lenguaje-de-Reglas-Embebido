@@ -5,7 +5,7 @@ TOKEN_REGEX = [
     ('ENTONCES', r'\bentonces\b'),
     ('COMPARADOR', r'==|!=|<|>'),
     ('LOGICO', r'\&\&|\|\|'),
-    ('ATRIBUTO', r'\b(edad|energia|vivo)\b'),
+    ('ATRIBUTO', r'\bindividuo\.(edad|energia|vivo)\b'),
     ('BOOLEANO', r'\b(true|false)\b'),
     ('NUMERO', r'\b\d+\b'),
     ('ACCION', r'\bcaminar\b|\breproducirse\b|\bcazar\b|\bmorir\b'),
