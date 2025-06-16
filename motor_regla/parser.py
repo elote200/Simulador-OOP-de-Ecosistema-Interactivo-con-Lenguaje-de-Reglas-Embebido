@@ -9,7 +9,6 @@ def parsearRegla(texto):
     if not tokens or tokens[0][0] != 'SI':
         raise SyntaxError("La regla debe comenzar con 'Si'")
 
-    # Ahora buscamos la palabra 'entonces'
     try:
         entonces_index = next(i for i, t in enumerate(tokens) if t[0] == 'ENTONCES')
     except StopIteration:
@@ -36,40 +35,55 @@ def parsearRegla(texto):
         if atributo_token[0] != 'ATRIBUTO' or operador_token[0] != 'COMPARADOR':
             raise SyntaxError("Condición mal formada")
 
-        # Parsear valor
-        if valor_token[0] == 'NUMERO':
-            valor = int(valor_token[1])
-        elif valor_token[0] == 'BOOLEANO':
-            valor = valor_token[1] == 'true'
+        atributo = atributo_token[1]
+        operador = operador_token[1]
+        tipo_valor = valor_token[0]
+        valor = valor_token[1]
+
+        # Validaciones semánticas
+        if atributo in ['energia', 'edad']:
+            if tipo_valor != 'NUMERO':
+                raise SyntaxError(f"'{atributo}' debe compararse con un número, no con '{valor}'")
+            if int(valor) < 0:
+                raise SyntaxError(f"'{atributo}' no puede ser negativo")
+            valor = int(valor)
+        
+        elif atributo == 'vivo':
+            if tipo_valor != 'BOOLEANO':
+                raise SyntaxError("'vivo' solo puede compararse con valores booleanos")
+            valor = valor == 'true'
+
+        elif atributo == 'estado':
+            if operador != '==':
+                raise SyntaxError("'estado' solo puede compararse usando '=='")
+            if tipo_valor != 'ESTADO':
+                raise SyntaxError(f"El valor para 'estado' debe ser un estado válido, no '{valor}'")
+
         else:
-            raise SyntaxError(f"Valor inválido: {valor_token[1]}")
+            raise SyntaxError(f"Atributo desconocido: {atributo}")
 
         condiciones.append({
-            "atributo": atributo_token[1],
-            "operador": operador_token[1],
+            "atributo": atributo,
+            "operador": operador,
             "valor": valor
         })
 
         i += 3
-        
-        # Si hay más tokens, debería ser un operador lógico seguido de otra condición
         if i < len(condicion_tokens):
             if condicion_tokens[i][0] != 'LOGICO':
                 raise SyntaxError(f"Operador lógico esperado después de condición en posición {i}")
             operadores_logicos.append(condicion_tokens[i][1])
             i += 1
 
-            # Verificamos que haya al menos 3 tokens más para la siguiente condición
             if i + 2 >= len(condicion_tokens):
                 raise SyntaxError(f"Condición esperada después del operador lógico '{condicion_tokens[i-1][1]}'")
-
-      
 
     return {
         "accion": accion,
         "condiciones": condiciones,
         "operadores_logicos": operadores_logicos
     }
+
 
 def getRegla(reg):
     if(reg['accion'] == 'morir'):
