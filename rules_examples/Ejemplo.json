@@ -6,7 +6,7 @@
             {
                 "reglas":
                 [
-                    "Si edad == 20 || energia < 20 entonces morir"
+                    "Si energia < 95 entonces cazar"
                 ]
             },
             "Cebra":

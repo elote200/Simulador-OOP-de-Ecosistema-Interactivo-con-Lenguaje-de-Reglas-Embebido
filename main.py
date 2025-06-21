@@ -57,7 +57,7 @@ def main():
     c1 = Individuo(10, 10, cebra)
     c1.energia = 100
     c1.edad = 50
-    c2 = Individuo(30, 12, cebra)
+    c2 = Individuo(9, 10, leon)
     c2.energia = 100 
     c2.edad = 30
 
@@ -96,7 +96,7 @@ def main():
             ambiente.actualizar()
 
             print(con1)
-            print(con2)
+            print(c2)
             time.sleep(1)
         except KeyboardInterrupt:
             print("\nSaliendo del programa...")

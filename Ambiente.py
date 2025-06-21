@@ -1,3 +1,4 @@
+from Individuo import Estado
 
 class Ambiente:
     def __init__(self, nombre, ancho, alto):
@@ -99,10 +100,22 @@ class Ambiente:
                 
         return hierbaCercana
 
-    def encontrarPresaMasCercana(self, individuo): #Para que el individuo se mueva hacia la presa mas cercana
+    def encontrarPresaMasCercana(self, individuo):
         presaCercana = None
+        distanciaMinima = float('inf')  # Establecemos una distancia infinita al principio
         
-        pass
+        for otro_individuo in self.individuos:
+            # Verificamos si el otro individuo es una presa (debe ser un individuo diferente y estar vivo)
+            if otro_individuo != individuo and otro_individuo.estado == Estado.VIVO and otro_individuo.especie != individuo.especie:
+                # Calculamos la distancia entre el cazador y la presa
+                distancia = abs(individuo.x - otro_individuo.x) + abs(individuo.y - otro_individuo.y)
+                
+                # Si la distancia es menor que la mínima encontrada hasta ahora, actualizamos la presa más cercana
+                if distancia < distanciaMinima:
+                    distanciaMinima = distancia
+                    presaCercana = otro_individuo
+
+        return presaCercana
         
     def encontrarDepredadorMasCercano(self, individuo): #Para que el individuo se aleje del depredador mas cercano
         depredadorCercano = None

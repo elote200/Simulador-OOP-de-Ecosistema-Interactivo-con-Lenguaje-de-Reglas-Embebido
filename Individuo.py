@@ -24,7 +24,7 @@ class Individuo:
 
     def moverse(self, ambiente):
 
-        if(self.estado == Estado.MUERTO or self.estado == Estado.REPRODUCIENDOSE):
+        if(self.estado == Estado.MUERTO or self.estado == Estado.REPRODUCIENDOSE or self.estado == Estado.CAZANDO):
             return
         dx, dy = random.choice([(0, 1), (1, 0), (0, -1), (-1, 0)])  
 
@@ -36,8 +36,16 @@ class Individuo:
                 if abs(dx) > abs(dy):
                     dx = 1 if dx > 0 else -1
                 else:
+                    dy = 1 if dy > 0 else -1 
+        elif self.estado == Estado.BUSCANDO_ALIMENTO:
+            presa = ambiente.encontrarPresaMasCercana(self)
+            if presa is not None:
+                dx = presa.x - self.x
+                dy = presa.y - self.y
+                if abs(dx) > abs(dy):
+                    dx = 1 if dx > 0 else -1
+                else:
                     dy = 1 if dy > 0 else -1
-        
 
         nueva_x = self.x + dx
         nueva_y = self.y + dy
@@ -69,7 +77,7 @@ class Individuo:
         pass
     
     def cazar(self, ambiente):
-        pass
+        return self.estado == Estado.CAZANDO
 
     def morir(self):
         self.estado = Estado.MUERTO

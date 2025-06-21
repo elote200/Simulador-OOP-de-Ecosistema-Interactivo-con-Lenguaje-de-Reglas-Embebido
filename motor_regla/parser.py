@@ -1,6 +1,7 @@
 from .lexer import tokenizar
 from regla.ReglaMorir import ReglaMorir
 from regla.ReglaReproducirse import ReglaReproducirse
+from regla.ReglaCaza import ReglaCaza
 import json
 
 def parsearRegla(texto):
@@ -90,6 +91,8 @@ def getRegla(reg):
         return ReglaMorir(reg['condiciones'], reg['operadores_logicos'])
     elif(reg['accion'] == 'reproducirse'):
         return ReglaReproducirse(reg['condiciones'], reg['operadores_logicos'])
+    elif(reg['accion'] == 'cazar'):
+        return ReglaCaza(reg['condiciones'], reg['operadores_logicos'])
     else:
         raise SyntaxError(f"Acción desconocida: {reg['accion']}. Solo se admite 'morir' como acción.")
 
