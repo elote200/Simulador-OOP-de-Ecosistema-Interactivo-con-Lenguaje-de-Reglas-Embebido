@@ -1,0 +1,21 @@
+[
+  {
+    "Sabana Africana": {
+      "Leon": {
+        "cantidad": 2,
+        "energia maxima": 30,
+        "reglas": [
+          "Si edad < 5 entonces morir"
+        ]
+      },
+      "Cebra": {
+        "cantidad": 10,
+        "energia maxima": 20,
+        "reglas": [
+          "Si energia < 15 entonces correr",
+          "Si energia == 20 entonces reproducirse"
+        ]
+      }
+    }
+  }
+]
