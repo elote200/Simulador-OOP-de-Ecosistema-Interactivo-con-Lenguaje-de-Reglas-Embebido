@@ -12,8 +12,8 @@ global leon, cebra, zorro, conejo, venado, tigre
 global ambiente
 
 # Variable para simular diferentes comportamientos
-# 1: Cazar, 2: Reproducir, 3: Morir
-simulacion = 3
+# 1: Cazar, 2: Reproducir, 3: Morir, 4: Simulación completa
+simulacion = 4
 
 def cargarJson():
     if len(sys.argv) < 2:
@@ -99,6 +99,54 @@ def simularMorir():
     
     pass
 
+def simulacionCompleta():
+    # Simulación completa con todas las especies
+    leon1 = Individuo(25, 20, leon)
+    leon1.energia = 100
+    leon1.edad = 50
+    cebra1 = Individuo(20, 15, cebra)
+    cebra1.energia = 80
+    cebra1.edad = 40
+
+    cebra2 = Individuo(30, 20, cebra)
+    cebra2.energia = 90
+    cebra2.edad = 45
+
+    cebra3 = Individuo(18, 12, cebra)
+    cebra3.energia = 70
+    cebra3.edad = 35
+
+    
+    zorro1 = Individuo(15, 10, zorro)
+    zorro1.energia = 60
+    zorro1.edad = 30
+    
+    conejo1 = Individuo(5, 5, conejo)
+    conejo1.energia = 50
+    conejo1.edad = 20
+
+    conejo2 = Individuo(20, 11, conejo)
+    conejo2.energia = 55
+    conejo2.edad = 22
+    
+    venado1 = Individuo(25, 15, venado)
+    venado1.energia = 70
+    venado1.edad = 35
+    
+    tigre1 = Individuo(38, 28, tigre)
+    tigre1.energia = 90
+    tigre1.edad = 60
+    
+    ambiente.agregar_individuo(leon1)
+    ambiente.agregar_individuo(cebra1)
+    ambiente.agregar_individuo(cebra2)
+    ambiente.agregar_individuo(cebra3)
+    ambiente.agregar_individuo(zorro1)
+    ambiente.agregar_individuo(conejo1)
+    ambiente.agregar_individuo(conejo2)
+    ambiente.agregar_individuo(venado1)
+    ambiente.agregar_individuo(tigre1)
+    
 
 def main(e):
     
@@ -109,6 +157,8 @@ def main(e):
             simularReproducir()
         case 3:
             simularMorir()
+        case 4:
+            simulacionCompleta()
 
     while True:
         try:
