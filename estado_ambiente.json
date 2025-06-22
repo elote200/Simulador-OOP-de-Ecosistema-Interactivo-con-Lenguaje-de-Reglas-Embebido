@@ -1,85 +1,145 @@
 {
-    "ciclo": 14,
+    "ciclo": 26,
     "ancho": 40,
     "alto": 30,
     "individuos": [
         {
-            "id": 1979274365840,
+            "id": 2130585383808,
             "especie": "Leon",
             "posicion": [
-                10,
+                24,
+                16
+            ],
+            "estado": "VIVO",
+            "energia": 75,
+            "edad": 76,
+            "reproduciendo": false
+        },
+        {
+            "id": 2130587093264,
+            "especie": "Cebra",
+            "posicion": [
+                17,
+                14
+            ],
+            "estado": "VIVO",
+            "energia": 54,
+            "edad": 66,
+            "reproduciendo": false
+        },
+        {
+            "id": 2130587093584,
+            "especie": "Cebra",
+            "posicion": [
+                26,
                 10
             ],
             "estado": "VIVO",
-            "energia": 98,
-            "edad": 44,
+            "energia": 64,
+            "edad": 71,
             "reproduciendo": false
         },
         {
-            "id": 1979274366160,
+            "id": 2130585298512,
+            "especie": "Cebra",
+            "posicion": [
+                15,
+                13
+            ],
+            "estado": "VIVO",
+            "energia": 46,
+            "edad": 61,
+            "reproduciendo": false
+        },
+        {
+            "id": 2130585298816,
+            "especie": "Zorro",
+            "posicion": [
+                11,
+                10
+            ],
+            "estado": "VIVO",
+            "energia": 38,
+            "edad": 56,
+            "reproduciendo": false
+        },
+        {
+            "id": 2130586826032,
             "especie": "Conejo",
             "posicion": [
                 13,
-                2
+                11
             ],
             "estado": "BUSCANDO_PAREJA",
-            "energia": 80,
-            "edad": 44,
+            "energia": 39,
+            "edad": 46,
             "reproduciendo": true
         },
         {
-            "id": 1979272586832,
+            "id": 2130585431280,
             "especie": "Conejo",
             "posicion": [
                 14,
-                3
+                10
             ],
             "estado": "BUSCANDO_PAREJA",
-            "energia": 87,
-            "edad": 32,
+            "energia": 45,
+            "edad": 48,
             "reproduciendo": true
         },
         {
-            "id": 1979272587136,
-            "especie": "Conejo",
+            "id": 2130585431552,
+            "especie": "Venado",
             "posicion": [
-                10,
-                5
+                27,
+                13
             ],
             "estado": "VIVO",
-            "energia": 90,
-            "edad": 10,
+            "energia": 44,
+            "edad": 61,
             "reproduciendo": false
         },
         {
-            "id": 1979274164080,
-            "especie": "Conejo",
+            "id": 2130585479504,
+            "especie": "Tigre",
             "posicion": [
-                14,
-                4
+                31,
+                24
             ],
             "estado": "VIVO",
-            "energia": 95,
-            "edad": 6,
+            "energia": 65,
+            "edad": 86,
+            "reproduciendo": false
+        },
+        {
+            "id": 2130585476688,
+            "especie": "Conejo",
+            "posicion": [
+                10,
+                8
+            ],
+            "estado": "VIVO",
+            "energia": 92,
+            "edad": 16,
             "reproduciendo": false
         }
     ],
     "hierbas": [
         [
-            19,
-            25
+            8,
+            1
         ],
         [
-            14,
-            18
+            17,
+            5
         ],
         [
-            12,
-            13
+            34,
+            17
         ],
         [
-            10,
-            7
+            0,
+            14
         ]
     ]
 }

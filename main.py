@@ -179,9 +179,6 @@ def main(e):
             
             ambiente.mostrar()
             ambiente.actualizar()
-
-            print(con1)
-            print(c2)
             if(ambiente.ciclo % 2 == 0):
                 crearJSON(ambiente)
             time.sleep(1)
