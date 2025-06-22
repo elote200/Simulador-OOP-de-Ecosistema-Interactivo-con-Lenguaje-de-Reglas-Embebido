@@ -2,14 +2,18 @@ from motor_regla.parser import parsearJson
 import os
 import sys
 import time
-
 from random import random
-
 from Ambiente import Ambiente
 from Comportamiento import Comportamiento
 from Individuo import Individuo
-
 from Especie import Especie
+
+global leon, cebra, zorro, conejo, venado, tigre
+global ambiente
+
+# Variable para simular diferentes comportamientos
+# 1: Cazar, 2: Reproducir, 3: Morir
+simulacion = 1
 
 def cargarJson():
     if len(sys.argv) < 2:
@@ -34,12 +38,13 @@ def cargarJson():
         print(f"Error al procesar el archivo JSON: {e}")
         return
 
-def main():
-
+def cargarEspecies():
+    global leon, cebra, zorro, conejo, venado, tigre
+    global ambiente
+    
+    ambiente = Ambiente("Selva", 40, 30)  
     # Cargar las reglas desde el archivo JSON
     reglas = cargarJson()
-    
-    ambiente = Ambiente("Bosque", 40, 30)
 
     # Definimos algunas especies con sus comportamientos
     leon = Especie("Leon",'🦁', 40, Comportamiento(reglas[0]['reglas']))
@@ -49,45 +54,37 @@ def main():
     venado = Especie("Venado", '🦌', 25, Comportamiento(reglas[4]['reglas']))
     tigre = Especie("Tigre", '🐯', 50, Comportamiento(reglas[5]['reglas']))
 
+# Definimos unas simulaciones
 
-    # Creamos algunos individuos de diferentes especies
-    # y les asignamos energía inicial
-    # para probar los eventos y reglas
+def simularCazar():
+    c1 = Individuo(20, 10, cebra)
+    c1.energia = 80
+    c1.edad = 15
 
-    c1 = Individuo(10, 10, cebra)
-    c1.energia = 100
-    c1.edad = 50
-    c2 = Individuo(9, 10, leon)
-    c2.energia = 100 
-    c2.edad = 30
+    l1 = Individuo(9, 10, leon)
+    l1.energia = 30 
+    l1.edad = 30
 
-    con1 = Individuo(5, 5, conejo)
-    con1.edad = 30
-
-    con2 = Individuo(15, 2, conejo)
-    con2.edad = 18
-
-    # Agregamos individuos al ambiente
-    """
-    ambiente.agregar_individuo(Individuo(3, 4, leon))
-    ambiente.agregar_individuo(Individuo(5, 4, leon))
-    ambiente.agregar_individuo(Individuo(2, 4, leon))
-
-    ambiente.agregar_individuo(Individuo(10, 2, tigre))
-    ambiente.agregar_individuo(Individuo(9, 15, zorro))
-    ambiente.agregar_individuo(Individuo(15, 9, conejo))
-
-    ambiente.agregar_individuo(Individuo(5, 5, cebra))
-    ambiente.agregar_individuo(Individuo(3, 3, venado))
-
-    """
     ambiente.agregar_individuo(c1)
-    ambiente.agregar_individuo(c2)
+    ambiente.agregar_individuo(l1)
+    pass
 
-    ambiente.agregar_individuo(con1)
-    ambiente.agregar_individuo(con2)
+def simularReproducir():
+    pass
 
+def simularMorir():
+    pass
+
+def main(e):
     
+    match e:
+        case 1:
+            simularCazar()
+        case 2:
+            simularReproducir()
+        case 3:
+            simularMorir()
+
     while True:
         try:
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -95,12 +92,12 @@ def main():
             ambiente.mostrar()
             ambiente.actualizar()
 
-            print(con1)
-            print(c2)
             time.sleep(1)
         except KeyboardInterrupt:
             print("\nSaliendo del programa...")
             break
 
+cargarEspecies()
+main(simulacion)
 
-main()
+    
