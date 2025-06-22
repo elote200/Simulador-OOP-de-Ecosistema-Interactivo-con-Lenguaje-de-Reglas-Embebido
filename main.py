@@ -13,7 +13,7 @@ global ambiente
 
 # Variable para simular diferentes comportamientos
 # 1: Cazar, 2: Reproducir, 3: Morir
-simulacion = 1
+simulacion = 3
 
 def cargarJson():
     if len(sys.argv) < 2:
@@ -70,10 +70,35 @@ def simularCazar():
     pass
 
 def simularReproducir():
+    conejo1 = Individuo(5, 5, conejo)
+    conejo2 = Individuo(9, 15, conejo)
+
+    conejo1.energia = 100
+    conejo2.energia = 100
+    
+    conejo1.edad = 30
+    conejo2.edad = 20
+
+    ambiente.agregar_individuo(conejo1)
+    ambiente.agregar_individuo(conejo2)
+    
     pass
 
 def simularMorir():
+
+    zebra1 = Individuo(10, 10, cebra)
+    zebra2 = Individuo(15, 15, cebra)
+    
+    zebra1.energia = 10  # Simulamos que este individuo muere por falta de energia
+
+    zebra2.energia = 50  # Este individuo sobrevive
+    zebra2.edad = 75
+
+    ambiente.agregar_individuo(zebra1)
+    ambiente.agregar_individuo(zebra2)
+    
     pass
+
 
 def main(e):
     
