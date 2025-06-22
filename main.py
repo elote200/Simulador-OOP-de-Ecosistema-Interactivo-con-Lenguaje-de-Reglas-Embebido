@@ -4,12 +4,17 @@ import sys
 import time
 import json
 from random import random
-
 from Ambiente import Ambiente
 from Comportamiento import Comportamiento
 from Individuo import Individuo
-
 from Especie import Especie
+
+global leon, cebra, zorro, conejo, venado, tigre
+global ambiente
+
+# Variable para simular diferentes comportamientos
+# 1: Cazar, 2: Reproducir, 3: Morir, 4: Simulación completa
+simulacion = 4
 
 def crearJSON(ambiente):
     data = {
@@ -46,12 +51,13 @@ def cargarJson():
         print(f"Error al procesar el archivo JSON: {e}")
         return
 
-def main():
-
+def cargarEspecies():
+    global leon, cebra, zorro, conejo, venado, tigre
+    global ambiente
+    
+    ambiente = Ambiente("Selva", 40, 30)  
     # Cargar las reglas desde el archivo JSON
     reglas = cargarJson()
-    
-    ambiente = Ambiente("Bosque", 40, 30)
 
     # Definimos algunas especies con sus comportamientos
     leon = Especie("Leon",'🦁', 40, Comportamiento(reglas[0]['reglas']))
@@ -61,43 +67,111 @@ def main():
     venado = Especie("Venado", '🦌', 25, Comportamiento(reglas[4]['reglas']))
     tigre = Especie("Tigre", '🐯', 50, Comportamiento(reglas[5]['reglas']))
 
+# Definimos unas simulaciones
 
-    # Creamos algunos individuos de diferentes especies
-    # y les asignamos energía inicial
-    # para probar los eventos y reglas
+def simularCazar():
+    c1 = Individuo(20, 10, cebra)
+    c1.energia = 80
+    c1.edad = 15
 
-    c1 = Individuo(10, 10, cebra)
-    c1.energia = 100
-    c1.edad = 50
-    c2 = Individuo(9, 10, leon)
-    c2.energia = 100 
-    c2.edad = 30
+    l1 = Individuo(9, 10, leon)
+    l1.energia = 30 
+    l1.edad = 30
 
-    con1 = Individuo(5, 5, conejo)
-    con1.edad = 30
-
-    con2 = Individuo(15, 2, conejo)
-    con2.edad = 18
-
-    # Agregamos individuos al ambiente
-    """
-    ambiente.agregar_individuo(Individuo(3, 4, leon))
-    ambiente.agregar_individuo(Individuo(5, 4, leon))
-    ambiente.agregar_individuo(Individuo(2, 4, leon))
-
-    ambiente.agregar_individuo(Individuo(10, 2, tigre))
-    ambiente.agregar_individuo(Individuo(9, 15, zorro))
-    ambiente.agregar_individuo(Individuo(15, 9, conejo))
-
-    ambiente.agregar_individuo(Individuo(5, 5, cebra))
-    ambiente.agregar_individuo(Individuo(3, 3, venado))
-
-    """
     ambiente.agregar_individuo(c1)
-    ambiente.agregar_individuo(c2)
+    ambiente.agregar_individuo(l1)
+    pass
 
-    ambiente.agregar_individuo(con1)
-    ambiente.agregar_individuo(con2)
+def simularReproducir():
+    conejo1 = Individuo(5, 5, conejo)
+    conejo2 = Individuo(9, 15, conejo)
+
+    conejo1.energia = 100
+    conejo2.energia = 100
+    
+    conejo1.edad = 30
+    conejo2.edad = 20
+
+    ambiente.agregar_individuo(conejo1)
+    ambiente.agregar_individuo(conejo2)
+    
+    pass
+
+def simularMorir():
+
+    zebra1 = Individuo(10, 10, cebra)
+    zebra2 = Individuo(15, 15, cebra)
+    
+    zebra1.energia = 10  # Simulamos que este individuo muere por falta de energia
+
+    zebra2.energia = 50  # Este individuo sobrevive
+    zebra2.edad = 75
+
+    ambiente.agregar_individuo(zebra1)
+    ambiente.agregar_individuo(zebra2)
+    
+    pass
+
+def simulacionCompleta():
+    # Simulación completa con todas las especies
+    leon1 = Individuo(25, 20, leon)
+    leon1.energia = 100
+    leon1.edad = 50
+    cebra1 = Individuo(20, 15, cebra)
+    cebra1.energia = 80
+    cebra1.edad = 40
+
+    cebra2 = Individuo(30, 20, cebra)
+    cebra2.energia = 90
+    cebra2.edad = 45
+
+    cebra3 = Individuo(18, 12, cebra)
+    cebra3.energia = 70
+    cebra3.edad = 35
+
+    
+    zorro1 = Individuo(15, 10, zorro)
+    zorro1.energia = 60
+    zorro1.edad = 30
+    
+    conejo1 = Individuo(5, 5, conejo)
+    conejo1.energia = 50
+    conejo1.edad = 20
+
+    conejo2 = Individuo(20, 11, conejo)
+    conejo2.energia = 55
+    conejo2.edad = 22
+    
+    venado1 = Individuo(25, 15, venado)
+    venado1.energia = 70
+    venado1.edad = 35
+    
+    tigre1 = Individuo(38, 28, tigre)
+    tigre1.energia = 90
+    tigre1.edad = 60
+    
+    ambiente.agregar_individuo(leon1)
+    ambiente.agregar_individuo(cebra1)
+    ambiente.agregar_individuo(cebra2)
+    ambiente.agregar_individuo(cebra3)
+    ambiente.agregar_individuo(zorro1)
+    ambiente.agregar_individuo(conejo1)
+    ambiente.agregar_individuo(conejo2)
+    ambiente.agregar_individuo(venado1)
+    ambiente.agregar_individuo(tigre1)
+    
+
+def main(e):
+    
+    match e:
+        case 1:
+            simularCazar()
+        case 2:
+            simularReproducir()
+        case 3:
+            simularMorir()
+        case 4:
+            simulacionCompleta()
 
     while True:
         try:
@@ -115,5 +189,7 @@ def main():
             print("\nSaliendo del programa...")
             break
 
+cargarEspecies()
+main(simulacion)
 
-main()
+    

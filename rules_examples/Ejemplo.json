@@ -6,7 +6,7 @@
             {
                 "reglas":
                 [
-                    "Si energia < 95 entonces cazar"
+                    "Si energia < 30 entonces cazar"
                 ]
             },
             "Cebra":

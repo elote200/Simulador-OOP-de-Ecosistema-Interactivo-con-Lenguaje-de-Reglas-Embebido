@@ -40,6 +40,7 @@ class ReglaCaza(Regla):
 
         # Si está cerca de la presa (distancia Manhattan <= 1)
         if self.calDistancia(individuo, presa) <= 1:
+            print(f'lo va a cazar')
             # Si el individuo está cerca de la presa, cambia su estado a Cazando
             individuo.estado = Estado.CAZANDO
             presa.estado = Estado.MUERTO  # La presa muere
@@ -47,27 +48,6 @@ class ReglaCaza(Regla):
             # Crear un evento de caza, que se ejecutará en el siguiente ciclo
             evento = EventoCaza(ambiente.ciclo + 1, individuo, presa)
             ambiente.agregarEvento(evento)
-
-        else:
-            # Si no está cerca, el individuo se mueve hacia la presa
-            dx = presa.x - individuo.x  # Diferencia en X
-            dy = presa.y - individuo.y  # Diferencia en Y
-
-            if abs(dx) >= abs(dy):
-                # Si la diferencia en X es mayor o igual, mueve en X
-                if dx > 0:
-                    individuo.x += 1
-                else:
-                    individuo.x -= 1
-            else:
-                # Si la diferencia en Y es mayor, mueve en Y
-                if dy > 0:
-                    individuo.y += 1
-                else:
-                    individuo.y -= 1
-
-            # Moverse hacia la presa consume energía
-            individuo.energia -= 1
 
     def __str__(self):
         """
