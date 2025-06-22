@@ -1,0 +1,85 @@
+{
+    "ciclo": 14,
+    "ancho": 40,
+    "alto": 30,
+    "individuos": [
+        {
+            "id": 1979274365840,
+            "especie": "Leon",
+            "posicion": [
+                10,
+                10
+            ],
+            "estado": "VIVO",
+            "energia": 98,
+            "edad": 44,
+            "reproduciendo": false
+        },
+        {
+            "id": 1979274366160,
+            "especie": "Conejo",
+            "posicion": [
+                13,
+                2
+            ],
+            "estado": "BUSCANDO_PAREJA",
+            "energia": 80,
+            "edad": 44,
+            "reproduciendo": true
+        },
+        {
+            "id": 1979272586832,
+            "especie": "Conejo",
+            "posicion": [
+                14,
+                3
+            ],
+            "estado": "BUSCANDO_PAREJA",
+            "energia": 87,
+            "edad": 32,
+            "reproduciendo": true
+        },
+        {
+            "id": 1979272587136,
+            "especie": "Conejo",
+            "posicion": [
+                10,
+                5
+            ],
+            "estado": "VIVO",
+            "energia": 90,
+            "edad": 10,
+            "reproduciendo": false
+        },
+        {
+            "id": 1979274164080,
+            "especie": "Conejo",
+            "posicion": [
+                14,
+                4
+            ],
+            "estado": "VIVO",
+            "energia": 95,
+            "edad": 6,
+            "reproduciendo": false
+        }
+    ],
+    "hierbas": [
+        [
+            19,
+            25
+        ],
+        [
+            14,
+            18
+        ],
+        [
+            12,
+            13
+        ],
+        [
+            10,
+            7
+        ]
+    ]
+}

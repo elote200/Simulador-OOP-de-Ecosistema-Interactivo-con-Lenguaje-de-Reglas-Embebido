@@ -18,6 +18,7 @@ class Ambiente:
 
         self.eventos = []
 
+
     def agregarEvento(self, evento):
         self.eventos.append(evento)
 
@@ -140,4 +141,20 @@ class Ambiente:
         self.ejecutarEventos()
         self.ciclo += 1
 
+    def obtenerResumenIndividuos(self):
+        resumen = []
+
+        for individuo in self.individuos:
+            info = {
+                "id": id(individuo),  # ID único del objeto en memoria
+                "especie": individuo.especie.nombre if individuo.especie else "Desconocida",
+                "posicion": (individuo.x, individuo.y),
+                "estado": individuo.estado.name if hasattr(individuo.estado, "name") else str(individuo.estado),
+                "energia": getattr(individuo, "energia", "N/D"),
+                "edad": getattr(individuo, "edad", "N/D"),
+                "reproduciendo": individuo.estaBuscandoPareja() if hasattr(individuo, "estaBuscandoPareja") else "N/D"
+            }
+            resumen.append(info)
+
+        return resumen
         

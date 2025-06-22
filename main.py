@@ -2,7 +2,7 @@ from motor_regla.parser import parsearJson
 import os
 import sys
 import time
-
+import json
 from random import random
 
 from Ambiente import Ambiente
@@ -10,6 +10,18 @@ from Comportamiento import Comportamiento
 from Individuo import Individuo
 
 from Especie import Especie
+
+def crearJSON(ambiente):
+    data = {
+        "ciclo": ambiente.ciclo,
+        "ancho": ambiente.ancho,
+        "alto": ambiente.alto,
+        "individuos": ambiente.obtenerResumenIndividuos(),
+        "hierbas": ambiente.hierbas
+    }
+
+    with open("estado_ambiente.json", "w") as archivo_json:
+        json.dump(data, archivo_json, indent=4)
 
 def cargarJson():
     if len(sys.argv) < 2:
@@ -87,7 +99,6 @@ def main():
     ambiente.agregar_individuo(con1)
     ambiente.agregar_individuo(con2)
 
-    
     while True:
         try:
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -97,6 +108,8 @@ def main():
 
             print(con1)
             print(c2)
+            if(ambiente.ciclo % 2 == 0):
+                crearJSON(ambiente)
             time.sleep(1)
         except KeyboardInterrupt:
             print("\nSaliendo del programa...")
