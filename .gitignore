@@ -3,3 +3,6 @@ utilidades/__pycache__
 regla/__pycache__
 eventos/__pycache__
 motor_reglas/__pycache__
+
+#Ignoramos archivos de estado
+estado_ambiente.json

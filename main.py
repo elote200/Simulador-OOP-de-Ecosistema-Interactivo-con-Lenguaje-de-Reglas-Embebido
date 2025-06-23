@@ -14,7 +14,8 @@ global ambiente
 
 # Variable para simular diferentes comportamientos
 # 1: Cazar, 2: Reproducir, 3: Morir, 4: Simulación completa
-simulacion = 4
+simulacion = 3
+nEstado = 1
 
 def crearJSON(ambiente):
     data = {
@@ -22,7 +23,6 @@ def crearJSON(ambiente):
         "ancho": ambiente.ancho,
         "alto": ambiente.alto,
         "individuos": ambiente.obtenerResumenIndividuos(),
-        "hierbas": ambiente.hierbas
     }
 
     with open("estado_ambiente.json", "w") as archivo_json:
@@ -116,6 +116,7 @@ def simularMorir():
     pass
 
 def simulacionCompleta():
+    
     # Simulación completa con todas las especies
     leon1 = Individuo(25, 20, leon)
     leon1.energia = 100
@@ -162,8 +163,9 @@ def simulacionCompleta():
     ambiente.agregar_individuo(conejo2)
     ambiente.agregar_individuo(venado1)
     ambiente.agregar_individuo(tigre1)
-    
 
+# Simulación de comportamiento según la opción seleccionada
+ 
 def main(e):
     
     match e:
@@ -182,7 +184,7 @@ def main(e):
             
             ambiente.mostrar()
             ambiente.actualizar()
-            if(ambiente.ciclo % 2 == 0):
+            if(ambiente.ciclo % nEstado == 0):
                 crearJSON(ambiente)
             time.sleep(1)
         except KeyboardInterrupt:

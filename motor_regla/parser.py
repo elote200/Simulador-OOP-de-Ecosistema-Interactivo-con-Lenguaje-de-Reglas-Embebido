@@ -159,12 +159,12 @@ def parsearJson(archivo):
                                 case 'Tigre':
                                       reglas[5]['reglas'].append(reglaParseada)
                         except SyntaxError as e:
-                            print(f"Error de sintaxis: {e}\n")
+                            raise Exception(f'Error de sintaxis: {e}')
         
     except json.JSONDecodeError:
-        print("Error: El archivo no contiene un JSON válido.")
+        raise Exception("El archivo no contiene un JSON válido.")
     except Exception as e:
-        print(f"Ocurrió un error al procesar el archivo: {e}")
+        raise Exception(f"Error al procesar el archivo: {e}")
 
     print("\nReglas parseadas:")
     for especie in reglas:
