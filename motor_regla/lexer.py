@@ -10,6 +10,7 @@ TOKEN_REGEX = [
     ('NUMERO', r'\b\d+\b'),
     ('ESTADO', r'\b(Caminando|Reproduciendo|Cazando|Buscando_comida)\b'),
     ('ACCION', r'\b(caminar|reproducirse|cazar|morir)\b'),
+    ('IDENTIFICADOR', r'\b[a-zA-Z_][a-zA-Z0-9_]*\b'),
     ('ESPACIO', r'\s+'),
     ('DESCONOCIDO', r'.')
 ]

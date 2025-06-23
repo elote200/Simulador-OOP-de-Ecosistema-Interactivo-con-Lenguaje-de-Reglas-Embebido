@@ -94,7 +94,7 @@ def getRegla(reg):
     elif(reg['accion'] == 'cazar'):
         return ReglaCaza(reg['condiciones'], reg['operadores_logicos'])
     else:
-        raise SyntaxError(f"Acción desconocida: {reg['accion']}. Solo se admite 'morir' como acción.")
+        raise SyntaxError(f"Acción desconocida: {reg['accion']}. Solo se admite 'morir', 'reproducir', 'cazar' como acción.")
 
 def parsearJson(archivo):
 

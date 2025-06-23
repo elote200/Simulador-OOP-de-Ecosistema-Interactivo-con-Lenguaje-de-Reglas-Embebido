@@ -13,7 +13,7 @@
             {
                 "reglas":
                 [
-                    "Si edad == 80 || energia < 5 entonces morir",
+                    "Si edad > 80 || energia < 5 entonces morir",
                     "Si energia > 95 && edad > 30 entonces reproducirse"
                 ]
             },

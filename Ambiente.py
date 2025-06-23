@@ -19,6 +19,10 @@ class Ambiente:
         self.eventos = []
 
 
+
+    def obtenerTotalIndividuos(self):
+        return len(self.individuos)
+
     def agregarEvento(self, evento):
         self.eventos.append(evento)
 

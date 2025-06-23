@@ -1,30 +1,127 @@
 {
-    "ciclo": 8,
+    "ciclo": 22,
     "ancho": 40,
     "alto": 30,
+    "individuos_totales": 10,
     "individuos": [
         {
-            "id": 3062082811712,
-            "especie": "Cebra",
+            "id": 1751854162880,
+            "especie": "Leon",
             "posicion": [
-                10,
-                10
+                24,
+                19
             ],
             "estado": "VIVO",
-            "energia": 2,
-            "edad": 8,
+            "energia": 78,
+            "edad": 72,
             "reproduciendo": false
         },
         {
-            "id": 3062083555920,
+            "id": 1751854355264,
+            "especie": "Cebra",
+            "posicion": [
+                16,
+                16
+            ],
+            "estado": "VIVO",
+            "energia": 59,
+            "edad": 62,
+            "reproduciendo": false
+        },
+        {
+            "id": 1751854355792,
+            "especie": "Cebra",
+            "posicion": [
+                30,
+                20
+            ],
+            "estado": "VIVO",
+            "energia": 68,
+            "edad": 67,
+            "reproduciendo": false
+        },
+        {
+            "id": 1751854355744,
             "especie": "Cebra",
             "posicion": [
                 14,
-                18
+                15
             ],
             "estado": "VIVO",
-            "energia": 42,
-            "edad": 83,
+            "energia": 49,
+            "edad": 57,
+            "reproduciendo": false
+        },
+        {
+            "id": 1751854355840,
+            "especie": "Zorro",
+            "posicion": [
+                14,
+                8
+            ],
+            "estado": "VIVO",
+            "energia": 41,
+            "edad": 52,
+            "reproduciendo": false
+        },
+        {
+            "id": 1751854355888,
+            "especie": "Conejo",
+            "posicion": [
+                13,
+                11
+            ],
+            "estado": "BUSCANDO_PAREJA",
+            "energia": 39,
+            "edad": 42,
+            "reproduciendo": true
+        },
+        {
+            "id": 1751854355936,
+            "especie": "Conejo",
+            "posicion": [
+                14,
+                10
+            ],
+            "estado": "BUSCANDO_PAREJA",
+            "energia": 45,
+            "edad": 44,
+            "reproduciendo": true
+        },
+        {
+            "id": 1751854355984,
+            "especie": "Venado",
+            "posicion": [
+                27,
+                21
+            ],
+            "estado": "VIVO",
+            "energia": 48,
+            "edad": 57,
+            "reproduciendo": false
+        },
+        {
+            "id": 1751854356032,
+            "especie": "Tigre",
+            "posicion": [
+                39,
+                28
+            ],
+            "estado": "VIVO",
+            "energia": 69,
+            "edad": 82,
+            "reproduciendo": false
+        },
+        {
+            "id": 1751854365584,
+            "especie": "Conejo",
+            "posicion": [
+                12,
+                9
+            ],
+            "estado": "VIVO",
+            "energia": 92,
+            "edad": 11,
             "reproduciendo": false
         }
     ]

@@ -14,7 +14,7 @@ global ambiente
 
 # Variable para simular diferentes comportamientos
 # 1: Cazar, 2: Reproducir, 3: Morir, 4: Simulación completa
-simulacion = 3
+simulacion = 4
 nEstado = 1
 
 def crearJSON(ambiente):
@@ -22,6 +22,7 @@ def crearJSON(ambiente):
         "ciclo": ambiente.ciclo,
         "ancho": ambiente.ancho,
         "alto": ambiente.alto,
+        "individuos_totales": ambiente.obtenerTotalIndividuos(),
         "individuos": ambiente.obtenerResumenIndividuos(),
     }
 
@@ -73,10 +74,12 @@ def cargarEspecies():
 # Definimos unas simulaciones
 
 def simularCazar():
+    # Agregamos una cebra
     c1 = Individuo(20, 10, cebra)
     c1.energia = 80
     c1.edad = 15
 
+    # Agregamos un leon, con necesidad de cazar
     l1 = Individuo(9, 10, leon)
     l1.energia = 30 
     l1.edad = 30
@@ -86,6 +89,7 @@ def simularCazar():
     pass
 
 def simularReproducir():
+    # Simulamos la reproducción de conejos
     conejo1 = Individuo(5, 5, conejo)
     conejo2 = Individuo(9, 15, conejo)
 
@@ -102,13 +106,14 @@ def simularReproducir():
 
 def simularMorir():
 
+    # Simulamos la muerte de cebras por falta de energía
     zebra1 = Individuo(10, 10, cebra)
     zebra2 = Individuo(15, 15, cebra)
     
     zebra1.energia = 10  # Simulamos que este individuo muere por falta de energia
 
     zebra2.energia = 50  # Este individuo sobrevive
-    zebra2.edad = 75
+    zebra2.edad = 70
 
     ambiente.agregar_individuo(zebra1)
     ambiente.agregar_individuo(zebra2)

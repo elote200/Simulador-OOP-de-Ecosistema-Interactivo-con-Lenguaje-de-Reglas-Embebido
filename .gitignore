@@ -1,8 +1,12 @@
+
 __pycache__
 utilidades/__pycache__
 regla/__pycache__
 eventos/__pycache__
 motor_reglas/__pycache__
+
+
+*.pyc
 
 #Ignoramos archivos de estado
 estado_ambiente.json
