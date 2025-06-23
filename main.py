@@ -59,6 +59,9 @@ def cargarEspecies():
     # Cargar las reglas desde el archivo JSON
     reglas = cargarJson()
 
+    if reglas is None:
+        raise Exception("No se pudieron cargar las reglas del archivo JSON.")
+    
     # Definimos algunas especies con sus comportamientos
     leon = Especie("Leon",'🦁', 40, Comportamiento(reglas[0]['reglas']))
     cebra = Especie("Cebra", '🦓', 30, Comportamiento(reglas[1]['reglas']))
